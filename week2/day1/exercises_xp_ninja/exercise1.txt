@@ -1,0 +1,7 @@
+The PATH variable is an environment variable on your computer that contains a list of directories where the operating system looks for executable files when you run a command in the terminal. When you enter a command in the terminal, the operating system searches for the corresponding executable file in the directories listed in the PATH variable.
+
+In the given scenario, you can call `python3` from any directory in the terminal even if you are not in the executable directory because the directory containing the `python3` executable is included in the PATH variable. The operating system looks for the `python3` executable in the directories listed in the PATH variable and executes it when you run the `python3` command.
+
+By including the directory containing the `python3` executable in the PATH variable, you can conveniently run Python commands or scripts from any directory without specifying the full path to the executable each time.
+
+It's worth noting that the specific configuration of the PATH variable can vary depending on the operating system and the way Python is installed. The installation process usually adds the appropriate directories to the PATH variable to enable running Python commands globally.

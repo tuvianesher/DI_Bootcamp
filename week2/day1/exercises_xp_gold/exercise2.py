@@ -1,7 +1,12 @@
-for i in range(1500, 2501):
-    if i % 5 == 0 and i % 7 == 0:
-        print(i)
-while True:
-    user_input = input("Press q to quit: ")
-    if user_input.lower() == "q":
-        break
+month = int(input("Enter a month (1 to 12): "))
+
+if month in [3, 4, 5]:
+    season = "Spring"
+elif month in [6, 7, 8]:
+    season = "Summer"
+elif month in [9, 10, 11]:
+    season = "Autumn"
+else:
+    season = "Winter"
+
+print(f"The season of month {month} is {season}.")
