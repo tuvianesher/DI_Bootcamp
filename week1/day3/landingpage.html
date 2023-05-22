@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+
+    <style>
+        /* Unique CSS styles go here */
+        :root {
+            --unique-primary: #0d6efd;
+            --unique-secondary: #6c757d;
+            --unique-light: #f8f9fa;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--unique-light);
+        }
+
+        .navbar {
+            background-color: var(--unique-primary);
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .navbar-button {
+            background-color: #fff;
+            color: var(--unique-primary);
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .header {
+            background-color: var(--unique-primary);
+            text-align: center;
+            padding: 40px;
+            color: #fff;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="tel"],
+        .form-container select,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+            resize: vertical;
+        }
+
+        .form-container button {
+            background-color: var(--unique-primary);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <p>Unburden yourself from the weight of email overload!</p>
+        <a href="#" class="navbar-button">Learn How</a>
+    </div>
+
+    <div class="header">
+        <h1>DOWNLOAD NOW</h1>
+    </div>
+
+    <div class="form-container">
+        <form>
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" required>
+
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="website">Website URL:</label>
+            <input type="text" id="website" name="website" required>
+
+            <label for="company">Company Name:</label>
+            <input type="text" id="company" name="company" required>
+
+            <label for="workers">How many workers are employed there?</label>
+            <select id="workers" name="workers" required>
+                <option value="" selected disabled>- Please select -</option>
+                <option value="1-10">1-10</option>
+                <option value="11-50">11-50</option>
+                <option value="51-100">51-100</option>
+                <option value="101-500">101-500</option>
+                <option value="500+">500+</option>
+            </select>
+
+            <label for="services">Does your company sell any of these services?</label>
+            <select id="services" name="services" required>
+                <option value="" selected disabled>- Please select -</option>
+                <option value="web-design">Web Design</option>
+                <option value="online-marketing">Online Marketing</option>
+                <option value="seo-ssm">SEO/SSM</option>
+                <option value="advertising-agency-services">Advertising Agency Services</option>
+            </select>
+
+            <label for="subscribe">Subscribe to marketing blog:</label>
+            <input type="checkbox" id="subscribe" name="subscribe">
+<br>
+            <button type="submit">Download Now</button>
+        </form>
+    </div>
+</body>
+
+</html>

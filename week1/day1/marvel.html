@@ -4,50 +4,55 @@
   <meta charset="UTF-8">
   <title>Thor Odinson</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      color: white;
-      background-image: url("https://user-images.githubusercontent.com/30896388/168069577-2f570d08-61d3-49d8-b7dd-c4b9192aaf68.jpg");
-      background-size: cover;
-      background-position: center;
-    }
-    
-    header {
-      display: flex;
-      justify-content: space-between;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
 
-    header h1 {
-      font-size: 80px;
-      text-align: center;
-      margin: 0;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: white;
+  background-image: url("https://user-images.githubusercontent.com/30896388/168069577-2f570d08-61d3-49d8-b7dd-c4b9192aaf68.jpg");
+  background-size: cover;
+  background-position: center;
+}
 
-    header p {
-      font-size: 24px;
-      text-align: center;
-      margin-top: 20px;
-    }
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
 
-    .hover-words {
-      cursor: pointer;
-      transition: color 0.3s;
-    }
+header h1 {
+  font-size: 80px;
+  text-align: center;
+  margin: 0;
+}
 
-    .hover-words:hover {
-      color: yellow;
-    }
+header p {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 20px;
+}
 
-    table {
-      margin-top: 50px;
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid white;
-    }
+.hover-words {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.hover-words:hover {
+  color: yellow;
+}
+
+table {
+  margin-top: 50px;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid white;
+}
+
 a {
   color: white; /* changes the link color to beige */
   text-decoration: none; /* removes underline */
@@ -56,51 +61,101 @@ a {
 a:hover {
   font-size: 200%; /* underlines the link on hover */
 }
-    td, th {
-      border: 1px solid white;
-      padding: 10px;
-      text-align: center;
-      font-size: 24px;
-    }
 
-    th {
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-    }
-.preview-box {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 90%;
-  height: 90%;
-  background-color: white;
-  z-index: 9999;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-}
-
-.preview-link:hover + .preview-box {
-  display: block;
-}
-
-.preview-box iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-.absolute-positioned {
-  position: absolute;
-  top: 250px;
-  right: 60%;
+td, th {
+  border: 1px solid white;
   padding: 10px;
+  text-align: center;
+  font-size: 24px;
 }
 
-    td {
-      background-color: rgba(255, 255, 255, 0.8);
-      color: black;
-    }
+th {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+td {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  body {
+    background-color: black;
+  }
+
+  header {
+    background-color: red;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  /* Large devices (laptops/desktops, 992px and up) */
+  header {
+    background-color: red;
+    color: white;
+  }
+
+  header h1 {
+    font-size: 60px;
+  }
+
+  header p {
+    font-size: 20px;
+  }
+
+  .preview-link {
+    display: none;
+  }
+
+  .absolute-positioned {
+    position: static;
+    padding: 10px;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Medium devices (landscape tablets, 768px and up) */
+  header {
+    background-color: lightgreen;
+    color: black;
+  }
+
+  header h1 {
+    font-size: 25px;
+  }
+
+  header p {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  header {
+    background-color: yellow;
+    color: black;
+  }
+
+  header h1 {
+    font-size: 35px;
+  }
+
+  header p {
+    font-size: 20px;
+  }
+
+  .absolute-positioned {
+    position: static;
+    padding: 10px;
+    text-align: left;
+  }
+}
+
   </style>
 </head>
 <body>
