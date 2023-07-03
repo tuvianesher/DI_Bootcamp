@@ -1,0 +1,17 @@
+alphabetList = list("abcdefghijklmnopqrstuvwxyz")
+
+p = Pagination(alphabetList, 4)
+
+print(p.getVisibleItems())  # ["a", "b", "c", "d"]
+
+p.nextPage()
+
+print(p.getVisibleItems())  # ["e", "f", "g", "h"]
+
+p.lastPage()
+
+print(p.getVisibleItems())  # ["y", "z"]
+
+p.goToPage(10)
+
+print(p.getVisibleItems())  # ["y", "z"]
