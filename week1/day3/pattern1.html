@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+
+    .plaid-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    .plaid-square {
+      width: calc(100% / var(--num-columns));
+      height: calc(100% / var(--num-rows));
+      box-sizing: border-box;
+    }
+
+    .plaid-light {
+      background-color: #ffffff;
+    }
+
+    .plaid-dark {
+      background-color: #000000;
+    }
+
+    .plaid-blue {
+      background-color: #3498db;
+    }
+
+    .plaid-green {
+      background-color: #2ecc71;
+    }
+
+    /* Add more color classes here */
+
+  </style>
+</head>
+<body>
+  <div class="plaid-container"></div>
+
+  <script>
+    // Get the plaid container element
+    const container = document.querySelector('.plaid-container');
+
+    // Calculate the number of rows and columns based on the screen size
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    const squareSize = 40; // Adjust this value to change the square size
+    const numColumns = Math.ceil(screenWidth / squareSize);
+    const numRows = Math.ceil(screenHeight / squareSize);
+
+    // Set the custom CSS variables for the number of rows and columns
+    document.documentElement.style.setProperty('--num-rows', numRows);
+    document.documentElement.style.setProperty('--num-columns', numColumns);
+
+    // Generate the plaid pattern dynamically
+    for (let row = 0; row < numRows; row++) {
+      for (let col = 0; col < numColumns; col++) {
+        const square = document.createElement('div');
+        square.classList.add('plaid-square');
+        
+        // Alternate between different color classes
+        if ((row + col) % 2 === 0) {
+          square.classList.add('plaid-light');
+        } else {
+          square.classList.add('plaid-dark');
+        }
+
+        // Add additional color classes here
+        // square.classList.add('plaid-blue');
+        // square.classList.add('plaid-green');
+        // ...
+
+        container.appendChild(square);
+      }
+    }
+  </script>
+</body>
+</html>
