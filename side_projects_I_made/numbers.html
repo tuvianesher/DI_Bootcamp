@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Float Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+    }
+    #floatsList {
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+  <script>
+    function generateFloats(event) {
+     event.preventDefault(); // Prevent form submission
+      // Get input values
+      var stepover = parseFloat(document.getElementById("stepover").value);
+      var start = parseFloat(document.getElementById("start").value);
+      var end = parseFloat(document.getElementById("end").value);
+
+      // Perform validation
+      if (isNaN(stepover) || isNaN(start) || isNaN(end)) {
+        alert("Please enter valid numeric values for stepover, start, and end.");
+        return;
+      }
+
+      // Generate floats
+      var floats = [];
+      var increment = stepover > 0 ? stepover : -stepover;
+      var direction = stepover > 0 ? 1 : -1;
+      for (var i = start; (direction > 0 && i <= end) || (direction < 0 && i >= end); i += direction * increment) {
+        var floatStr = i.toFixed(10); // Change the number of decimal places as needed
+        var floatNum = parseFloat(floatStr);
+        floats.push(floatNum.toString()); // Remove trailing zeros
+      }
+
+      // Display the floats
+      document.getElementById("floatsList").innerHTML = "Floats: " + floats.join(", ");
+    }
+  </script>
+</head>
+<body>
+  <h1>Float Generator</h1>
+  <form onsubmit="generateFloats(event)">
+    <label for="stepover">Stepover:</label>
+    <input type="number" id="stepover" step="0.001" />
+    <label for="start">Start:</label>
+    <input type="number" id="start" step="0.001" />
+    <label for="end">End:</label>
+    <input type="number" id="end" step="0.001" />
+    <button onclick="generateFloats()">Generate Floats</button>
+  </form>
+  <p id="floatsList"></p>
+</body>
+</html>

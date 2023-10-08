@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>prompt sine</title>
+    <style>
+        body {
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            background-color: #042042;
+        }
+        .term-panel {
+            margin-bottom: 2px;
+        }
+        .term-panel input {
+            margin-right: 1px;
+        }
+        #copiableText {
+            margin-top: 2px;
+            font-size: 10px;
+            font-family: "Courier New", monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            padding: 10px;
+            background-color: #666999;
+        }
+        #separatorInput {
+            margin-top: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="termPanels">
+        <!-- Example prewritten term panels -->
+        <div class="term-panel">
+            <label for="term1">1</label>
+            <input type="text" id="term1" value="">
+            <label for="freq1">Frq</label>
+            <input type="number" id="freq1" value="">
+            <label for="amp1">Amp</label>
+            <input type="number" id="amp1" value="">
+            <label for="pos1">Pos</label>
+            <input type="number" id="pos1" value="">
+            <label for="height1">Hgt</label>
+            <input type="number" id="height1" value="">
+            <button onclick="removeTermPanel(1)">X</button>
+        </div>
+    </div>
+    <button onclick="addTermPanel()">Add Term</button>
+    <br>
+    <label for="frames">Frames:</label>
+    <input type="number" id="frames" value="1200">
+    <br>
+    <input type="text" id="separatorInput" placeholder="Enter separator character">
+    <br>
+    <button onclick="generateCopiableText()">Generate</button>
+    <br>
+    <div id="copiableText"></div>
+    <script>
+        var terms = [];
+        var numTerms = 1;
+        function addTermPanel() {
+            var termPanels = document.getElementById('termPanels');
+            var numTermPanels = termPanels.children.length;
+            var newTermPanel = document.createElement('div');
+            newTermPanel.className = 'term-panel';
+            newTermPanel.innerHTML = `
+                <label for="term${numTermPanels + 1}">${numTermPanels + 1}</label>
+                <input type="text" id="term${numTermPanels + 1}" value="">
+                <label for="freq${numTermPanels + 1}">Frq</label>
+                <input type="number" id="freq${numTermPanels + 1}" value="">
+                <label for="amp${numTermPanels + 1}">Amp</label>
+                <input type="number" id="amp${numTermPanels + 1}" value="">
+                <label for="pos${numTermPanels + 1}">Pos</label>
+                <input type="number" id="pos${numTermPanels + 1}" value="">
+                <label for="height${numTermPanels + 1}">Hgt</label>
+                <input type="number" id="height${numTermPanels + 1}" value="">
+                <button onclick="removeTermPanel(${numTermPanels + 1})">X</button>
+            `;
+            termPanels.appendChild(newTermPanel);
+            numTerms++;
+        }
+        function removeTermPanel(panelIndex) {
+            var termPanels = document.getElementById('termPanels');
+            var panelToRemove = document.getElementById(`term${panelIndex}`).parentNode;
+            termPanels.removeChild(panelToRemove);
+            numTerms--;
+        }
+        function generateCopiableText() {
+            terms = [];
+            for (var i = 1; i <= numTerms; i++) {
+                var term = document.getElementById(`term${i}`).value;
+                var frequency = document.getElementById(`freq${i}`).value;
+                var amplitude = document.getElementById(`amp${i}`).value;
+                var position = document.getElementById(`pos${i}`).value;
+                var height = document.getElementById(`height${i}`).value;
+                terms.push({
+                    term: term,
+                    frequency: frequency,
+                    amplitude: amplitude,
+                    position: position,
+                    height: height
+                });
+            }
+            numFrames = document.getElementById('frames').value;
+            var copiableText = document.getElementById('copiableText');
+            var separatorInput = document.getElementById('separatorInput');
+            copiableText.innerHTML = '';
+            var separator = separatorInput.value || ",";
+            for (var i = 0; i < numFrames; i++) {
+                var frameText = '';
+
+                for (var j = 0; j < numTerms; j++) {
+                    var term = terms[j].term;
+                    var frequency = terms[j].frequency;
+                    var amplitude = terms[j].amplitude;
+                    var position = terms[j].position;
+                    var height = terms[j].height;
+                    var termText = generateTermText("", frequency, amplitude, position, height, i);
+                    frameText += term + termText;
+                }
+                var frameElement = document.createElement('div');
+                frameElement.innerText = frameText + separator;
+                copiableText.appendChild(frameElement);
+            }
+        }
+        function generateTermText(term, frequency, amplitude, position, height, frame) {
+            var x = (frame + position * 20 / numFrames);
+            x = x * Math.PI * frequency;
+            var y = amplitude * Math.sin(x);
+            y += parseFloat(height);
+            y = y.toFixed(10);
+            return term + y;
+        }
+    </script>
+</body>
+</html>
